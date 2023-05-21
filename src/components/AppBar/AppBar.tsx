@@ -1,8 +1,11 @@
-import { StatusFilter } from 'components/StatusFilter/StatusFilter';
-import { TaskCounter } from 'components/TaskCounter/TaskCounter';
+import React from 'react';
+
+import { StatusFilter } from '../StatusFilter/StatusFilter';
+import { TaskCounter } from '../TaskCounter/TaskCounter';
+
 import css from './AppBar.module.css';
 
-export const AppBar = () => {
+export const AppBar: React.FC = () => {
   return (
     <header className={css.wrapper}>
       <section className={css.section}>

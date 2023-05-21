@@ -1,10 +1,16 @@
-import { useSelector } from 'react-redux';
-import { Task } from 'components/Task/Task';
-import { getTasks, getStatusFilter } from 'redux/selectors';
-import { statusFilters } from 'redux/constants';
+import { useCustomSelector } from '../../redux/selectors';
+import { Task } from '../Task/Task';
+import { statusFilters } from '../../redux/constants';
 import css from './TaskList.module.css';
 
-const getVisibleTasks = (tasks, statusFilter) => {
+interface ITasks {
+  id: string;
+  text: string;
+  createdAt: number;
+  completed: boolean;
+}
+
+const getVisibleTasks = (tasks: ITasks[], statusFilter: string) => {
   switch (statusFilter) {
     case statusFilters.active:
       return tasks.filter(task => !task.completed);
@@ -15,9 +21,10 @@ const getVisibleTasks = (tasks, statusFilter) => {
   }
 };
 
-export const TaskList = () => {
-  const tasks = useSelector(getTasks);
-  const statusFilter = useSelector(getStatusFilter);
+export const TaskList: React.FC = () => {
+  const { getTasks: tasks, getStatusFilter: statusFilter } =
+    useCustomSelector();
+
   const visibleTasks = getVisibleTasks(tasks, statusFilter);
 
   return (

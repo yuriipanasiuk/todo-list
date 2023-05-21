@@ -1,11 +1,20 @@
+import React, { ReactNode } from 'react';
 import clsx from 'clsx';
+
 import css from './Button.module.css';
 
-export const Button = ({
+interface IButton {
+  selected?: boolean;
+  type?: 'button' | 'submit';
+  children: ReactNode;
+  onClick?: () => void;
+}
+
+export const Button: React.FC<IButton> = ({
   selected = false,
   type = 'button',
   children,
-  ...otherProps
+  onClick,
 }) => {
   return (
     <button
@@ -13,7 +22,7 @@ export const Button = ({
         [css.isSelected]: selected,
       })}
       type={type}
-      {...otherProps}
+      onClick={onClick}
     >
       {children}
     </button>

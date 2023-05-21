@@ -1,10 +1,20 @@
-import { useDispatch } from 'react-redux';
 import { MdClose } from 'react-icons/md';
-import css from './Task.module.css';
-import { deleteTask, toggleComlited } from 'redux/operations';
 
-export const Task = ({ task }) => {
-  const dispatch = useDispatch();
+import { useAppDispatch } from '../../hook/hook';
+import { deleteTask, toggleComlited } from '../../redux/operations';
+import css from './Task.module.css';
+
+interface ITaskProps {
+  task: {
+    id: string;
+    text: string;
+    createdAt: number;
+    completed: boolean;
+  };
+}
+
+export const Task: React.FC<ITaskProps> = ({ task }) => {
+  const dispatch = useAppDispatch();
   const handleDelete = () => dispatch(deleteTask(task.id));
   const handleToggleCompleted = () => dispatch(toggleComlited(task));
 
