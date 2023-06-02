@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'https://62584f320c918296a49543e7.mockapi.io';
+// axios.defaults.baseURL = 'https://62584f320c918296a49543e7.mockapi.io';
+axios.defaults.baseURL = 'https://6479d3b8a455e257fa63dca7.mockapi.io';
 
 type Todo = {
   id: string;
